@@ -197,7 +197,8 @@ backoffice
 手续费=总手续费*成交/委托，通过apiserver给商户接口缴纳手续费，
 缴纳手续费失败，写入point_error_statement_book
 
-
+##2. 积分交易撤单
+point_order_group_history
 
 
 
