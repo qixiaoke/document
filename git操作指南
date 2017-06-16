@@ -1,0 +1,18 @@
+#git操作指南
+
+## idea操作
+
+##1. 打开idea git
+![](https://ooo.0o0.ooo/2017/06/16/5943498c5c0f5.png)
+##2. 输入git地址
+https://github.com/qixiaoke/document.git
+![](https://ooo.0o0.ooo/2017/06/16/59434a7f77a56.png)
+##3. 创建自己本地的branch
+![](https://ooo.0o0.ooo/2017/06/16/59434b29d7276.png)
+##4. push本地branch到远程仓库
+![](https://ooo.0o0.ooo/2017/06/16/59434c19d9b09.png)
+##5. commit本地修改到本地branch
+![](https://ooo.0o0.ooo/2017/06/16/59434d182bb25.png)
+##6. push本地branch到远程仓库
+与第4步相同
+
