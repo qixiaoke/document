@@ -1,7 +1,7 @@
 
 /**
-实现isSorted方法，检测Array[A]是否按照给定的比例函数排序
- **/
+  * 实现isSorted方法，检测Array[A]是否按照给定的比例函数排序
+  */
 
 object TestIsSorted {
   def isSorted[A](as: Array[A], ordered: (A, A) => Boolean) : Boolean = {
