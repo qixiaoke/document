@@ -54,6 +54,36 @@ object TestMatch {
   }
 
   /**
+    * 练习3.5
+    * 删除列表中前缀全部符合判定的元素
+    * @param l
+    * @param f
+    * @tparam A
+    * @return
+    */
+  def dropWhile[A](l: List[A], f: A => Boolean) : List[A] = {
+    l match {
+      case Nil => Nil
+      case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
+    }
+  }
+
+  /**
+    * 练习3.5
+    * 柯里化dropWhileCurry，作用是可以充分利用类型自动推到，否则dropWhile中f参数类型必须要显示声明A
+    * @param l
+    * @param f
+    * @tparam A
+    * @return
+    */
+  def dropWhileCurry[A](l: List[A])(f: A => Boolean) : List[A] = {
+    l match {
+      case Nil => Nil
+      case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
+    }
+  }
+
+  /**
     * 练习3.6
     * 返回除了最后一个元素外的所有元素的列表
     * 重点注意这种思想
@@ -70,11 +100,14 @@ object TestMatch {
 
   def main(args: Array[String]): Unit = {
     //List.scala 模式匹配
-    println(List.x)
+    println("x" + List.x)
     //List.scala 删除第一个元素
-    println(deleteFirstNumber(List(1,2,3,4,5)))
-    println(replaceFirstWord(List(1,2,3,4,5),6))
-    println(drop(List(1,2,3,4,5), 3))
-    println(init(List(1,2,3,4,5)))
+    val list : List[Int] = List(1,2,3,4,5)
+    println("deleteFirstNumber" + deleteFirstNumber(list))
+    println("replaceFirstWord" + replaceFirstWord(list,6))
+    println("drop" + drop(list, 3))
+    println("init" + init(list))
+    println("dropWhile" + dropWhile(list, (x: Int) => x<4))
+    println("dropWhile" + dropWhileCurry(list)(x => x<4))
   }
 }
