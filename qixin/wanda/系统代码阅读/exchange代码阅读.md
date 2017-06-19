@@ -211,6 +211,7 @@ backoffice
 接收撤单成功消息，撤单积分结算
 撤销量+商户手续费[（撤销数量/委托数量）* 商户手续费 向下取整] 通过apiserver从商户中间账户转出，失败写入point_error_statement_book
 
+##3. 接收撤单成功消息，撤单积分结算
 
 
 #question
