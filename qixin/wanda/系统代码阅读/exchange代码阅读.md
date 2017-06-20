@@ -211,7 +211,19 @@ backoffice
 接收撤单成功消息，撤单积分结算
 撤销量+商户手续费[（撤销数量/委托数量）* 商户手续费 向下取整] 通过apiserver从商户中间账户转出，失败写入point_error_statement_book
 
+##3. 积分获取用户订单详情
+订单状态val ALL_OPEN, PARTIAL_OPEN, ALL_TRADED, ALL_CANCELED, PARTIAL_TRADED_PARTIAL_CANCELD ？？？
 
+payment包
+==
+##1. 获取充值代币的种类
+pay_price代币（飞凡币与人民币对应关系）
+
+##2. 获取充值支付方式
+查询表pay_mode
+
+##3. 支付下单等
+都是调一些支付接口
 
 #question
 撤单退还费用，是按比例退还，（撤销数量/委托数量）* 商户手续费 向下取整，这样全部撤销会有尾差吧？
