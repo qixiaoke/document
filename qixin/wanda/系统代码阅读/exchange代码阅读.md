@@ -261,7 +261,7 @@ account包
 
 order包
 ==
-frontoffice下单
+##1. frontoffice下单
 
 卖卡券：
 backoffice检查订单资格，如果是外部卡券，发往apiserver向商户查询量是否够
@@ -272,6 +272,16 @@ backoffice检查订单资格，如果是外部卡券，发往apiserver向商户�
 backoffice，相当于卖积分，如果是内部积分，查询积分额度是否够
 
 如果量允许，内部代币冻结，更改表coinwallet
+
+core 卡券撮合
+slot是所有保单中价格相同的所有订单，按时间顺序
+
+tryMatchWithBook 递归撮合保单和所有order中topslot，判断价格是否可以撮合，如果可以就调用matchingSlot撮合slot中top order
+
+matchingSlot 递归撮合报单和待撮合PriceSlot中top，每次都pop Slot，即时间最优订单出来撮合，直到报单或slot其一全部交易
+
+##2. 返回行情列表信息
+
 
 
 
