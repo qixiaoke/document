@@ -280,7 +280,22 @@ tryMatchWithBook 递归撮合保单和所有order中topslot，判断价格是否
 
 matchingSlot 递归撮合报单和待撮合PriceSlot中top，每次都pop Slot，即时间最优订单出来撮合，直到报单或slot其一全部交易
 
+backoffice 卡券结算,代币解冻等
+
 ##2. 返回行情列表信息
+查询CONTRACT_INFO表
+价格涨幅 （最新价格-收盘价格）/收盘价格
+
+##3. 返回实时价格及涨幅
+查询5挡价格top5_price
+
+交易汇总trade_minute
+
+##4. 开卡
+飞凡那边的券非
+
+我们自己的券，发往apiserver
+
 
 
 
