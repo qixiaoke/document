@@ -16,6 +16,7 @@ public class LockA implements Runnable {
                     synchronized (DeadLockTest.objB) {
                         System.out.println("LockA lockB" + System.currentTimeMillis());
                         TimeUnit.SECONDS.sleep(3);
+                        ;
                     }
                 }
             }
