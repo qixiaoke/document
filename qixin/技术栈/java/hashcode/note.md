@@ -1,0 +1,1 @@
+Map/Set的key为自定义对象时，必须重写hashCode和equals
