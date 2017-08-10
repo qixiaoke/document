@@ -24,4 +24,6 @@ A B 对l 来说，依赖级别相同，
 ----
 依赖范围会影响 编译 测试 运行 三个阶段
 
+----
+${project.artifactId} 就是本项目的artifactId
 
