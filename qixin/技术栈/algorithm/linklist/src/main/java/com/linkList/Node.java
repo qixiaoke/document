@@ -1,4 +1,4 @@
-package com;
+package com.linkList;
 
 /**
  * Created by qixin on 2017/8/14.
