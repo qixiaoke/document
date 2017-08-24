@@ -2,6 +2,8 @@ package com;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -10,10 +12,12 @@ import java.util.concurrent.TimeUnit;
 public class Run {
 
     private Timer timer;
+    private ScheduledExecutorService scheduledExecutorService;
     private long startTime;
 
     public Run() {
         timer = new Timer();
+        scheduledExecutorService = Executors.newScheduledThreadPool(2);
         startTime = System.currentTimeMillis();
     }
 
@@ -41,6 +45,27 @@ public class Run {
         }, delay);
     }
 
+    public void timeScheduleExecutor(long delay) {
+        scheduledExecutorService.schedule(new Runnable() {
+            public void run() {
+                System.out.println("run scheduledExecutorService time = " + (System.currentTimeMillis() - startTime));
+                try {
+                    TimeUnit.MILLISECONDS.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, delay, TimeUnit.MILLISECONDS);
+    }
+
+    public void timeScheduleExecutorException(long delay) {
+        scheduledExecutorService.schedule(new Runnable() {
+            public void run() {
+                System.out.println("run scheduledExecutorService time = " + (System.currentTimeMillis() - startTime));
+                throw new RuntimeException("123");
+            }
+        }, delay, TimeUnit.MILLISECONDS);
+    }
 
     public static void main(String[] args) {
         Run run = new Run();
@@ -50,8 +75,20 @@ public class Run {
 //        run.timeSchedule(3000);
 
         /////////////////////////////////////////////////////////////////
-        run.timeScheduleException(1000);
+//        run.timeScheduleException(1000);
         // 由于第一个定时器抛出异常，定时器无法捕捉，直接退出
-        run.timeScheduleException(3000);
+//        run.timeScheduleException(3000);
+
+        /////////////////////////////////////////////////////////////////
+        // 解决定时器延迟缺陷， 因为scheduledExecutorService = Executors.newScheduledThreadPool(2);
+        // 如果改为单线程scheduledExecutorService = Executors.newScheduledThreadPool(1); 就跟timer差不多了
+        run.timeScheduleExecutor(1000);
+        run.timeScheduleExecutor(3000);
+
+        ////////////////////////////////////////////////////////////////
+        // 解决定时器无法捕捉异常的缺陷
+//        run.timeScheduleExecutorException(1000);
+//        run.timeScheduleExecutorException(3000);
+
     }
 }

@@ -1,3 +1,11 @@
 Timer管理时间延迟缺陷
 
 Timer抛出异常缺陷
+
+Timer 的优点在于简单易用，但由于所有任务都是由同一个线程来调度，因此所有任务都是串行执行的
+
+ScheduledExecutorService设计思想是，每一个被调度的任务都会由线程池中一个线程去执行，因此任务是并发执行的，
+相互之间不会受到干扰。需要注意的是，只有当任务的执行时间到来时，ScheduledExecutorService 
+才会真正启动一个线程，其余时间 ScheduledExecutorService 都是在轮询任务的状态。
+
+如果ScheduledExecutorService service = Executors.newScheduledThreadPool(1);就跟timer差不多了
