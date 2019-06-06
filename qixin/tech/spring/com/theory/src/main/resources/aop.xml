@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="target" class="com.xml.OrderServiceImpl"/>
+    <bean id="advice" class="com.xml.ConcreteIntercepter"/>
+
+    <!--<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+        <!--<property name="target" ref="target"/>-->
+        <!--<property name="interceptorNames" value="advice"/>-->
+        <!--<property name="proxyTargetClass" value="false"/>-->
+    <!--</bean>-->
+
+    <!-- 配置切面 : proxy-target-class确定是否使用CGLIB -->
+    <aop:config proxy-target-class="true">
+        <!--
+            aop:pointcut : 切点定义
+            aop:advisor: 定义Spring传统AOP的切面,只支持一个pointcut/一个advice
+            aop:aspect : 定义AspectJ切面的,可以包含多个pointcut/多个advice
+        -->
+        <aop:pointcut id="pointcut" expression="execution(* com.xml.OrderServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
+    </aop:config>
+</beans>
